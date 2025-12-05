@@ -1,11 +1,9 @@
-import os
-import sys
-import sqlite3
-import hashlib
-import secrets
-import textwrap
-from datetime import datetime
-from random import Random
+from auth import get_user_progress, set_user_progress
+from chapter_loop import run_chapter
+from config import NUM_CHAPTERS
+from database import init_db
+from sign.login import login, signup
+
 
 def main():
     init_db()

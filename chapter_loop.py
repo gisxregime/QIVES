@@ -1,3 +1,12 @@
+import secrets
+import sys
+
+from auth import get_seed, save_seed, log_action, set_user_progress
+from random_fs_generator import build_fs
+from story import CHAPTER_GOALS
+from util_dirs_file import is_dir, is_file
+
+
 def run_chapter(user_id, username, chapter):
     seed = get_seed(user_id, chapter)
     if seed is None:

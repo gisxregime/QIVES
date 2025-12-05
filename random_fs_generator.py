@@ -1,4 +1,10 @@
 from random import Random
+
+from auth import register_evidence
+from config import DIRS_MIN, DIRS_MAX, FILES_MIN
+from story import STORY_CHUNKS
+
+
 def random_name(rng, kind="file"):
     adjectives = ["old","archive","meta","anon","user","session","temp","dump","trace","sys","log","note"]
     nouns = ["logs","msg","data","img","rec","cache","profile","anomaly","case","entry"]
@@ -26,7 +32,7 @@ def fake_file_content(rng):
         return "HINT: " + rng.choice(["follow timestamps", "check anomalies", "inspect drafts"])
     return rng.choice(choices)
 
-def build_fs(user_id, chapter, seed):
+def build_fs(user_id, chapter, seed, FILES_MAX=40, HINT_FOLDER_TEMPLATES=None):
     rng = Random(seed)
     root = {}
     # generate base directories

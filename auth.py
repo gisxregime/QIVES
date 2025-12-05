@@ -1,4 +1,10 @@
 import hashlib, secrets
+import sqlite3
+from datetime import datetime
+
+from database import get_db_conn
+
+
 def hash_password(password, salt_hex):
     h = hashlib.sha256()
     h.update(bytes.fromhex(salt_hex) + password.encode("utf-8"))

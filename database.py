@@ -1,4 +1,9 @@
 # Function to open a connection to the SQLite database
+import sqlite3
+
+from config import DB_FILE
+
+
 def get_db_conn():
     conn = sqlite3.connect(DB_FILE)  # Connect to DB file (ma-create if wala pa)
     conn.row_factory = sqlite3.Row   # Para column names ma-access like dictionary

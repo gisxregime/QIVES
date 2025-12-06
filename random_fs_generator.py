@@ -68,7 +68,8 @@ def build_fs(user_id, chapter, seed, FILES_MAX=40, HINT_FOLDER_TEMPLATES=None):
                     root[d][sub][random_name(rng, "file")] = fake_file_content(rng)
 
     # create the themed real folder name
-    templates = HINT_FOLDER_TEMPLATES.get(chapter, ["evidence"])
+    # If HINT_FOLDER_TEMPLATES is None, use an empty dict {} so .get() works
+    templates = (HINT_FOLDER_TEMPLATES or {}).get(chapter, ["evidence"])
     theme_name = rng.choice(templates) + f"_{rng.randint(100,999)}"
 
     # decide whether to nest (probability ~ 0.6 for nested as requested)

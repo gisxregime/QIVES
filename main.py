@@ -1,8 +1,11 @@
+import logging
+
 from auth import get_user_progress, set_user_progress
 from chapter_loop import run_chapter
 from config import NUM_CHAPTERS
 from database import init_db
-from sign.login import login, signup
+from login import login, signup
+
 
 
 def main():

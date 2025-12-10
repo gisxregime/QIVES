@@ -1,6 +1,6 @@
 import hashlib, secrets
 import sqlite3
-from datetime import datetime
+from datetime import datetime, timezone
 
 from database import get_db_conn
 
@@ -59,7 +59,7 @@ def set_user_progress(user_id, chapter):
 def log_action(user_id, action):
     conn = get_db_conn()
     c = conn.cursor()
-    ts = datetime.utcnow().isoformat() + "Z"
+    ts = datetime.now(timezone.utc).isoformat() + "Z"
     c.execute("INSERT INTO forensic_logs (user_id, action, timestamp) VALUES (?, ?, ?)",
               (user_id, action, ts))
     conn.commit()

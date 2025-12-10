@@ -1,4 +1,4 @@
-import logging
+import textwrap
 
 from auth import get_user_progress, set_user_progress
 from chapter_loop import run_chapter
@@ -10,14 +10,25 @@ from login import login, signup
 
 def main():
     init_db()
-    print("HOLLOW THREAD GATEWAY - QIVES\n")
-    print("*** TRIGGER WARNING ***")
+    art = """  █████   ██▓ ██▒   █▓▓█████   ██████ 
+▒██▓  ██▒▓██▒▓██░   █▒▓█   ▀ ▒██    ▒ 
+▒██▒  ██░▒██▒ ▓██  █▒░▒███   ░ ▓██▄   
+░██  █▀ ░░██░  ▒██ █░░▒▓█  ▄   ▒   ██▒
+░▒███▒█▄ ░██░   ▒▀█░  ░▒████▒▒██████▒▒
+░░ ▒▒░ ▒ ░▓     ░ ▐░  ░░ ▒░ ░▒ ▒▓▒ ▒ ░
+ ░ ▒░  ░  ▒ ░   ░ ░░   ░ ░  ░░ ░▒  ░ ░
+   ░   ░  ▒ ░     ░░     ░   ░  ░  ░  
+    ░     ░        ░     ░  ░      ░  
+                  ░                   """
+    print(textwrap.indent(art, '          '))
+    warn = "*** TRIGGER WARNING ***"
+    print(textwrap.indent(warn, '                 '))
     print("This game contains themes of self-harm and emotional exhaustion.\n")
 
     while True:
-        print("(1) Log In")
-        print("(2) Sign Up")
-        print("(3) Quit")
+        print("[1] Log In")
+        print("[2] Sign Up")
+        print("[3] Quit")
         sel = input("> ").strip()
         if sel == "1":
             uid, username = login()
@@ -55,7 +66,14 @@ def main():
                 break
             if opt == "--help":
                 print("Commands inside the game:")
-                print("  ls, cd <dir>, cd .., pwd, file <name>, cat <file>, save, exit\n")
+                print(f"{' ':<3}{'ls	             Show files/folders'}")
+                print(f"{' ':<3}{'cd <dir>	         Go into a folder'}")
+                print(f"{' ':<3}{'cd ..	         Go back one folder'}")
+                print(f"{' ':<3}{'pwd	             Show current location'}")
+                print(f"{' ':<3}{'file <name>	     Show file type'}")
+                print(f"{' ':<3}{'cat <file>	     Show file content'}")
+                print(f"{' ':<3}{'save	             Save the progress'}")
+                print(f"{' ':<3}{'exit	             Exit the game'}")
                 continue
             print("[!] Invalid. Type 'p' or '--help'.")
 

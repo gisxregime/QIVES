@@ -42,8 +42,16 @@ def run_chapter(user_id, username, chapter):
 
         node = locate()
 
-        if cmd == "help":
-            print("ls, cd <dir>, cd .., pwd, file <name>, cat <file>, save, exit")
+        if cmd == "--help":
+            print("""Command Simple Meaning: 
+                    ls	Show files/folders
+                    cd <dir>	Go into a folder
+                    cd ..	Go back one folder
+                    pwd	Show current location
+                    file <name>	Show file type
+                    cat <file>	Show file content
+                    save	Save the progress
+                    exit	Close terminal\n""")
             continue
 
         if cmd == "ls":
